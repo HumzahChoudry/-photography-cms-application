@@ -1,0 +1,11 @@
+<h1>Categories</h1>
+
+<% @categories.each do |category| %>
+    <%= image_tag(category.picture_url, width: 300) if category.picture.present? %><br>
+    <%= category.title %><br>
+    <%= category.description %>
+    <br>
+    <%= link_to 'Show', category %>
+    <%= link_to 'Edit', edit_category_path(post) %>
+    <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
