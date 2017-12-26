@@ -2,7 +2,8 @@ class Post < ApplicationRecord
   mount_uploader :picture, PictureUploader
   belongs_to :category
   has_many :post_tags
-  has_many :tags, through: :post_tags
+  #has_many :tags, through: :post_tags
+  has_and_belongs_to_many :tags
   accepts_nested_attributes_for :category
   accepts_nested_attributes_for :tags
 
@@ -20,10 +21,12 @@ class Post < ApplicationRecord
   end
 
   def category_id=(id)
-    self.category << Category.find(id: id)
+    self.category = Category.find(id)
+    self.save
+    byebug
   end
 
-  def category_id=(id)
+  def category_id
     self.try(:category).try(:id)
   end
 end

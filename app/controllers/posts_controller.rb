@@ -33,8 +33,9 @@ class PostsController < ApplicationController
       :category_id,
       :tag_contents => []
       ))
-    @categories = Category.all
-    @tags = Tag.all
+
+     @categories = Category.all
+    # @tags = Tag.all
 
 
     respond_to do |format|
