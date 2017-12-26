@@ -4,7 +4,7 @@ class CategoriesController < ApplicationController
   end
 
   def create
-    @category = Category.find_or_create_by(name: params[:category][:name])
+    @category = Category.find_or_create_by(name: params[:category][:name].downcase)
 
     redirect_to categories_path
   end

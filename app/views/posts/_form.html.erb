@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_field :description, id: :post_description %>
+    <%= form.text_area :description, id: :post_description %>
   </div>
 
   <div class="field">
@@ -33,10 +33,11 @@
 
 
 
-  <%= form.fields_for :tags do |tag| %>
-    <%= tag.label :tag_name %>
-    <%= tag.text_field :tag_name %><br>
-  <% end %>
+
+    <%= tag.label "Tags" %>
+    <%= form.text_field :tag_contents, { name: "post[tag_contents][]"} %><br><br>
+    <%= form.text_field :tag_contents, { name: "post[tag_contents][]"} %><br><br>
+    <%= form.text_field :tag_contents, { name: "post[tag_contents][]"} %><br>
   <br>
 
   <div class="actions">

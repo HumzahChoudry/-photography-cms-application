@@ -4,8 +4,7 @@ class TagsController < ApplicationController
   end
 
   def create
-    byebug
-    @tag = Tag.find_or_create_by(name: params[:tag][:name])
+    @tag = Tag.find_or_create_by(name: params[:tag][:name].downcase)
     redirect_to tags_path
   end
 

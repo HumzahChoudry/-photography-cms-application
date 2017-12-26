@@ -26,7 +26,16 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params(
+      :title,
+      :description,
+      :picture,
+      :category_id,
+      :tag_contents => []
+      ))
+    @categories = Category.all
+    @tags = Tag.all
+
 
     respond_to do |format|
       if @post.save
@@ -70,7 +79,7 @@ class PostsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
-      params.require(:post).permit(:title, :description, :picture)
+    def post_params(*args)
+      params.require(:post).permit(*args)
     end
 end
