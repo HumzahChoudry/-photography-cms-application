@@ -13,16 +13,20 @@
   </thead>
 
   <tbody> -->
+
     <% @posts.each do |post| %>
+    <div class="col-sm-4 portfolio-item">
         <%= image_tag(post.picture_url, width: 300) if post.picture.present? %><br>
         <%= post.title %><br>
-        <%= post.description %>
+        <!-- <%= post.description %> -->
         <br>
         <%= link_to 'Show', post %>
         <%= link_to 'Edit', edit_post_path(post) %>
         <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
         <br>
+      </div>
     <% end %>
+
   <!-- </tbody>
 </table> -->
 
