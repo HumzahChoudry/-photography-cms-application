@@ -23,7 +23,6 @@ class Post < ApplicationRecord
   def category_id=(id)
     self.category = Category.find(id)
     self.save
-    byebug
   end
 
   def category_id
