@@ -11,4 +11,11 @@ class TagsController < ApplicationController
   def index
     @tags = Tag.all
   end
+
+  def show
+      tag = Tag.find(params[:id])
+      @posts = Post.paginate(:page => params[:page], :per_page => 12)
+      @posts = @posts.all.select {|p|
+        p.tags.include?(tag)}
+  end
 end

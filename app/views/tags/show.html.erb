@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tags</h1>
+<br><br><br>
+
+<div class="row portfolio">
+  <% @posts.each do |post| %>
+    <div class="col-sm-4 portfolio-item text-center">
+      <h2><%= link_to post.title, post %></h2>
+      <% if post.picture.present? %>
+      <%= link_to image_tag(post.picture_url, width: 300), post %><br>
+      <% else %>
+      <div>
+        <br><br><br>
+        <h1>Image not available</h1>
+      </div>
+      <% end %>
+        <br>
+      <!-- <%= post.description %> -->
+      <br>
+      <%if current_user.try(:admin?) %>
+      <%= link_to 'Show', post %>
+      <%= link_to 'Edit', edit_post_path(post) %>
+      <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
+
+      <br>
+    </div>
+  <% end %>
+</div>
+
+<br> <br> <br>
+<div class="row">
+<%= link_to 'New Post', new_post_path %>
+</div>
